@@ -2,7 +2,7 @@ package com.example.enigma_cinemaapp.data;
 
 import android.provider.BaseColumns;
 
-public final class MovieEntry implements BaseColumns {
+public class MovieEntry implements BaseColumns {
 
     public static final String TABLE_NAME = "movie";
 
@@ -15,5 +15,11 @@ public final class MovieEntry implements BaseColumns {
     public static final String COLUMN_HEURE = "heure";
 
     public static final String COLUMN_DESCRIPTION = "description";
+
+    public static final String COLUMN_SCENARIO = "1";
+
+    public static final String COLUMN_REALISATION = "1";
+
+    public static final String COLUMN_MUSIQUE = "1";
 
 }

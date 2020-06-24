@@ -12,28 +12,18 @@
         tools:layout="@layout/fragment_first">
 
         <action
-            android:id="@+id/action_FirstFragment_to_SecondFragment"
-            app:destination="@id/SecondFragment" />
-
-        <action
             android:id="@+id/action_FirstFragment_to_MovieFragment"
             app:destination="@id/FilmFragment"/>
 
-    </fragment>
-    <fragment
-        android:id="@+id/SecondFragment"
-        android:name="com.example.enigma_cinemaapp.SecondFragment"
-        android:label="@string/second_fragment_label"
-        tools:layout="@layout/fragment_second">
-
-        <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
-            app:destination="@id/FirstFragment" />
     </fragment>
     <fragment
         android:id="@+id/FilmFragment"
         android:name="com.example.enigma_cinemaapp.FilmForm"
         android:label="Movie Form Fragment"
         tools:layout="@layout/fragment_film_form">
+
+        <action
+            android:id="@+id/action_MovieFilm_to_FirstFragment"
+            app:destination="@id/FirstFragment"/>
     </fragment>
 </navigation>

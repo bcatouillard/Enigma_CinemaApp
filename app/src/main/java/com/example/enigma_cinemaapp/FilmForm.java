@@ -2,12 +2,16 @@ package com.example.enigma_cinemaapp;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.ContentValues;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
+import androidx.annotation.ContentView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.fragment.NavHostFragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,6 +23,9 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
+import com.example.enigma_cinemaapp.data.MovieDbHelper;
+import com.example.enigma_cinemaapp.data.MovieEntry;
+
 import java.util.Calendar;
 
 /**
@@ -28,12 +35,10 @@ import java.util.Calendar;
  */
 public class FilmForm extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
 
@@ -79,7 +84,13 @@ public class FilmForm extends Fragment {
 
     public View onCreateView(LayoutInflater inflater, final ViewGroup container, Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_film_form, container, false);
+
+        return inflater.inflate(R.layout.fragment_film_form, container, false);
+    }
+
+    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
 
         etMovieName = (EditText) view.findViewById(R.id.EditTextMovieName);
         tvMovieName = (TextView) view.findViewById(R.id.TextViewMovieName);
@@ -104,7 +115,7 @@ public class FilmForm extends Fragment {
                 int day = cal.get(Calendar.DAY_OF_MONTH);
 
                 DatePickerDialog dialog = new DatePickerDialog(
-                        container.getContext(),
+                        getContext(),
                         android.R.style.Theme_Holo_Light_Panel,
                         mDateSetListener,
                         day,month,year);
@@ -121,7 +132,7 @@ public class FilmForm extends Fragment {
                 int minute = cal.get(Calendar.MINUTE);
 
                 TimePickerDialog mTimePicker;
-                mTimePicker = new TimePickerDialog(container.getContext(), new TimePickerDialog.OnTimeSetListener() {
+                mTimePicker = new TimePickerDialog(getContext(), new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
                         mTextViewTime.setText( selectedHour + ":" + selectedMinute);
@@ -149,12 +160,32 @@ public class FilmForm extends Fragment {
                 String movieTitle = etMovieName.getText().toString();
                 String date = mTextViewDate.getText().toString();
                 String heure = mTextViewTime.getText().toString();
+                String noteScenario = sScenario.getSelectedItem().toString();
+                String noteReal = sReal.getSelectedItem().toString();
+                String noteMusique = sMusique.getSelectedItem().toString();
+
+                MovieDbHelper dbhelper = new MovieDbHelper(getContext());
+                SQLiteDatabase db = dbhelper.getWritableDatabase();
+
+                ContentValues values = new ContentValues();
+                values.put(MovieEntry.COLUMN_TITLE, movieTitle);
+                values.put(MovieEntry.COLUMN_DATE, date);
+                values.put(MovieEntry.COLUMN_HEURE, heure);
+                values.put(MovieEntry.COLUMN_DESCRIPTION,movieDescription);
+                values.put(MovieEntry.COLUMN_SCENARIO,noteScenario);
+                values.put(MovieEntry.COLUMN_REALISATION,noteReal);
+                values.put(MovieEntry.COLUMN_MUSIQUE,noteMusique);
+
+                long newRowId = db.insert(MovieEntry.TABLE_NAME, null, values);
+
+                getView().findViewById(R.id.fab).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        NavHostFragment.findNavController(FilmForm.this)
+                                .navigate(R.id.action_MovieFilm_to_FirstFragment);
+                    }
+                });
             }
         });
-        return inflater.inflate(R.layout.fragment_film_form, container, false);
-    }
-
-    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
     }
 }

@@ -31,7 +31,10 @@ public class MovieDbHelper extends SQLiteOpenHelper {
                         MovieEntry.COLUMN_TITLE + " STRING NOT NULL, " +
                         MovieEntry.COLUMN_DATE + " STRING NOT NULL, " +
                         MovieEntry.COLUMN_HEURE + " STRING NOT NULL, " +
-                        MovieEntry.COLUMN_DESCRIPTION + " STRING NOT NULL);";
+                        MovieEntry.COLUMN_DESCRIPTION + " STRING NOT NULL, " +
+                        MovieEntry.COLUMN_SCENARIO + " STRING NOT NULL, " +
+                        MovieEntry.COLUMN_REALISATION + " STRING NOT NULL, " +
+                        MovieEntry.COLUMN_MUSIQUE + " STRING NOT NULL);";
 
         sqLiteDatabase.execSQL(SQL_CREATE_WEATHER_TABLE);
     }
