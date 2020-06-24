@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:ignore="MissingDefaultRessource"
+tools:context=".FilmForm">
+
+<TextView
+    android:id="@+id/TextViewMovieName"
+    android:layout_width="wrap_content"
+    android:layout_height="50dp"
+    android:text="@string/movie_name"
+    android:layout_marginLeft="20sp"
+    android:layout_marginRight="20sp"
+    android:layout_marginTop="20sp"
+    android:gravity="center"
+    android:textSize="15sp"/>
+
+<EditText
+    android:id="@+id/EditTextMovieName"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="20sp"
+    android:layout_toEndOf="@id/TextViewMovieName"
+    android:hint="@string/movie_name"
+    android:layout_toRightOf="@id/TextViewMovieName" />
+
+<TextView
+    android:id="@+id/TextViewDate"
+    android:layout_width="wrap_content"
+    android:layout_height="33dp"
+    android:layout_below="@id/TextViewMovieName"
+    android:layout_alignParentStart="true"
+    android:layout_alignParentLeft="true"
+    android:layout_marginStart="20sp"
+    android:layout_marginLeft="20sp"
+    android:layout_marginTop="20dp"
+    android:gravity="center"
+    android:hint="@string/movie_date" />
+
+
+<TextView
+    android:id="@+id/TextViewTime"
+    android:layout_width="wrap_content"
+    android:layout_height="31dp"
+    android:layout_below="@id/TextViewMovieName"
+    android:layout_alignParentStart="true"
+    android:layout_alignParentLeft="true"
+    android:layout_marginStart="192dp"
+    android:layout_marginLeft="192dp"
+    android:layout_marginTop="20dp"
+    android:layout_toEndOf="@id/TextViewDate"
+    android:layout_toRightOf="@id/TextViewDate"
+    android:gravity="center"
+    android:hint="@string/movie_time" />
+
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:id="@+id/TextViewScenario"
+    android:layout_below="@id/TextViewDate"
+    android:gravity="center"
+    android:layout_marginLeft="20sp"
+    android:layout_marginTop="20sp"
+    android:layout_marginStart="20sp"
+    android:text="@string/movieScenarioTextView"/>
+
+<Spinner
+    android:id="@+id/SpinnerScenario"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_below="@id/TextViewTime"
+    android:layout_marginStart="61dp"
+    android:layout_marginLeft="61dp"
+    android:layout_marginTop="19dp"
+    android:layout_toEndOf="@id/TextViewScenario"
+    android:layout_toRightOf="@id/TextViewScenario"
+    android:gravity="center"
+    android:entries="@array/notes_array"/>
+
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:id="@+id/TextViewRealisation"
+    android:layout_below="@id/TextViewScenario"
+    android:gravity="center"
+    android:layout_marginLeft="20sp"
+    android:layout_marginTop="20sp"
+    android:layout_marginStart="20sp"
+    android:text="@string/movieRealTextView"/>
+
+<Spinner
+    android:id="@+id/SpinnerReal"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_below="@id/SpinnerScenario"
+    android:layout_marginStart="32dp"
+    android:layout_marginLeft="20sp"
+    android:layout_marginTop="20sp"
+    android:layout_toEndOf="@id/TextViewRealisation"
+    android:layout_toRightOf="@id/TextViewRealisation"
+    android:gravity="center"
+    android:entries="@array/notes_array"/>
+
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:id="@+id/TextViewMusique"
+    android:layout_below="@id/TextViewRealisation"
+    android:gravity="center"
+    android:layout_marginLeft="20sp"
+    android:layout_marginTop="20sp"
+    android:layout_marginStart="20sp"
+    android:text="@string/movieMusicTextView"/>
+
+<Spinner
+    android:id="@+id/SpinnerMusique"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_below="@id/SpinnerReal"
+    android:layout_marginStart="47dp"
+    android:layout_marginLeft="47dp"
+    android:layout_marginTop="13dp"
+    android:layout_toEndOf="@id/TextViewMusique"
+    android:layout_toRightOf="@id/TextViewMusique"
+    android:gravity="center"
+    android:entries="@array/notes_array"/>
+
+<EditText
+    android:id="@+id/EditTextMovieDesc"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="20sp"
+    android:hint="@string/movieDescEditText"
+    android:layout_below="@id/TextViewMusique"
+    android:inputType="textMultiLine"
+    android:lines="8"
+    android:scrollbars="vertical"/>
+
+<Button
+    android:id="@+id/ButtonSave"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:text="@string/movie_button"
+    android:layout_marginTop="20sp"
+    android:layout_below="@id/EditTextMovieDesc"/>
+
+</RelativeLayout>
