@@ -9,4 +9,14 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+
+    <string name="movie_name">Nom du Film : </string>
+    <string name="movie_date">Date du Film : </string>
+    <string name="movie_time">Heure du Film : </string>
+    <string name="movie_tvname">Entrer le nom du film</string>
+    <string name="movieScenarioTextView">Note du Scénario :</string>
+    <string name="movieRealTextView">Note de la Réalisation :</string>
+    <string name="movieMusicTextView">Note de la Musique :</string>
+    <string name="movieDescEditText">Description du film</string>
+    <string name="movie_button">Sauvegarder</string>
 </resources>
